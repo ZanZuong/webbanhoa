@@ -1,0 +1,136 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="layout.master.cs" Inherits="webbanhoa.layout" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Dalatflower</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="css/all.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="chinhsua.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="header">
+            <div class="top-nav bg-w">
+                <div class="t-header">
+                    <ul>
+                        <li>
+                            <a href="Tracuu.aspx"><i class='fa fa-search'></i>Tra cứu</a>
+                        </li>
+                        <li>|</li>
+                        <li>
+                            <a href="#"><i class='fas fa-map-marker-alt'></i>TP.HCM </a>
+                        </li>
+                        <li>|</li>
+                        <% if (Session["NguoiDung"] != null)
+                            { %>
+                        <li>
+                            <a href="#" title="Tài Khoản"><%=  nguoiDung.Rows[0]["HoTen"] %></a>
+                        </li>
+                        <li>
+                            <asp:Button Text="Đăng xuất" CssClass="btn btn-danger" ID="btnLogout" OnClick="btnLogout_Click" runat="server" />
+                        </li>
+                        <% }
+                            else
+                            { %>
+                        <li id="a-account">
+                            <a href="DangNhap.aspx" title="Tài Khoản">Tài Khoản</a>
+                        </li>
+                        <% } %>
+                        <li>|</li>
+                        <li>
+                            <a href="ThemHoa.aspx" title="Thêm Hoa">Thêm Hoa</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12 mt-5">
+                <div class="row">
+                    <div class="col-md-4 col-lg-3">
+                        <a href="#" class="menu-link" aria-hidden="true"><i class="far fa-bars"></i></a>
+                        <div class="logo">
+                            <a href="XemHoa.aspx" title="dalat.flowers">
+                                <img src="images/logo-dalat.flowers.png" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-lg-9">
+                        <div class="row header-nav">
+                            <div class="col-12 col-md-6">
+                                <div class="search d-flex align-items-center">
+                                    <asp:TextBox runat="server" ID="txtSearch" CssClass="txt-se-item form-control" placeholder="Tìm sản phẩm" />
+                                    <asp:Button Text="Tìm kiếm" CssClass="ml-2 btn btn-primary" runat="server" ID="btnSearch" OnClick="btnSearch_Click" />
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 text-right hl">
+                                <h3>
+                                    <strong>Hotline:</strong> <a href="#">123456789</a>
+                                </h3>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <asp:ContentPlaceHolder ID="NoiDung" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="footer">
+            <div class="footer_wrapper">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h2 class="footer-title">Liên Hệ</h2>
+                            <ul class="list-unstyled">
+                                <li><strong>HCM:</strong>270F Võ Thị Sáu, Phường 7, Quận 3,TPHCM</li>
+                                <li><strong>Hà Nội:</strong>532A Đường Láng, Phường Đống Đa, Hà nội</li>
+                                <li><strong>Xưởng:</strong>18 Xô Viết Nghệ Tĩnh, Đà Lạt, Lâm Đồng</li>
+                                <li><strong>Điện thoại:</strong>123456789 <strong>Email:</strong>Youremail@example.com</li>
+                            </ul>
+                            <h2 class="footer-title">Văn phòng công ty</h2>
+                            <ul class="list-unstyled">
+                                <li><strong>Công ty Cổ Phần Color Life</strong></li>
+                                <li><strong>Địa chỉ: </strong>270F Võ Thị Sáu, P.7, Q. 3, Tp. Hồ Chí Minh</li>
+                                <li><strong>MST: </strong>0313230072 cấp lần đầu ngày 25/04/2015 bởi Sở kế hoạch đầu tư Thành phố Hồ Chí Minh</li>
+                                <li><strong>Email:</strong>Youremail@example.com</li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4">
+                            <h2 class="footer-title">Chăm sóc khách hàng</h2>
+                            <ul class="list-unstyled">
+                                <li><a href="#" title="Chính sách bảo mật">Chính sách bảo mật</a></li>
+                                <li><a href="#" title="Hướng dẫn thanh toán">Hướng dẫn thanh toán</a></li>
+                                <li><a href="#" title="Liên hệ">Liên hệ</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4">
+                            <h2 class="footer-title">Dalat.flowers</h2>
+                            <ul class="list-unstyled">
+                                <li><a href="#" title="Giới thiệu">Giới thiệu</a></li>
+                                <li><a href="#" title="Những câu hỏi thường gặp">Những câu hỏi thường gặp</a></li>
+                                <li><a href="#" title="Hướng dẫn đặt hàng">Hướng dẫn đặt hàng</a></li>
+                                <li><a href="#" title="Điều khoản và chính sách">Điều khoản và chính sách</a></li>
+                                <li><a href="#" title="Bảo mật thanh toán">Bảo mật thanh toán</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <span class="copyright">Dalat.flowers 2018. All rights reserved.</span>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
